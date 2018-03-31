@@ -8,8 +8,8 @@ class Loginmodel extends CI_Model {
 				->from('users')
 				->get();
 
-		if( $result->num_rows() ) {
-			return true;
+		if( $result->num_rows() == '1' ) {
+			return $result->row()->id;			
 		} else {
 			return false;
 		}
