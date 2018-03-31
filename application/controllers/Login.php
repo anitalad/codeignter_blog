@@ -8,7 +8,29 @@ class Login extends MY_Controller {
 	}
 
 	public function admin_login() {
-		echo "here";
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('username', 'User Name', 'required|alpha|max_length[12]|trim');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+		$this->form_validation->set_error_delimiters("<p class='text-danger'>","</p>");
+
+		if( $this->form_validation->run() == true) {
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
+
+			$this->load->model('loginmodel');
+
+			if( $this->loginmodel->login_valid($username, $password) ) {
+
+				echo "credintials valid";
+			} else {
+echo "credintials invalid";
+			}
+			
+
+		} else {
+			//$this->load->helper('form');
+			$this->load->view('public/admin_login');			
+		}
 
 	}
 }
