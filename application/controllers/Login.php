@@ -19,14 +19,14 @@ class Login extends MY_Controller {
 
 			$this->load->model('loginmodel');
 
-			$userId = $this->loginmodel->login_valid($username, $password) ;
-			if( $userId ) {
-				$this->load->library('session');
-				$this->session->set_userdata( 'id', $userId );
+			$userId = $this->loginmodel->login_valid($username, $password);
 
-				$this->load->view('admin/dashboard');
+			if( $userId ) {
+				$this->session->set_userdata( 'user_id', $userId );
+
+				return redirect('admin/dashboard');
 			} else {
-echo "credintials invalid";
+			echo "credintials invalid";
 			}
 			
 
