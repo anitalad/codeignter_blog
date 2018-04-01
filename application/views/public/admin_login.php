@@ -1,5 +1,12 @@
 <?php require_once('public_header.php'); ?>
 <div class="container">
+	<?php if($error = $this->session->flashdata('login_failed')) { ?>
+	<div class="alert alert-dismissible alert-warning">
+	  <button type="button" class="close" data-dismiss="alert">&times;</button>
+	  <h4 class="alert-heading">Warning!</h4>
+	  <p class="mb-0"><?php echo $error; ?></p>
+	</div>
+	<?php } ?>
 	<?php echo form_open('login/admin_login', ['id'=>'admin_login_farm']); ?>
 	  <fieldset>
 	    <legend>Admin Login</legend>

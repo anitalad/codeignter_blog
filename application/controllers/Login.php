@@ -3,6 +3,11 @@
 class Login extends MY_Controller {
 
 	public function index() {
+		
+		if( $this->session->userdata('user_id') ) {
+			redirect('admin/dashboard');
+		}
+
 		$this->load->helper('form');
 		$this->load->view('public/admin_login');
 	}
@@ -26,7 +31,8 @@ class Login extends MY_Controller {
 
 				return redirect('admin/dashboard');
 			} else {
-			echo "credintials invalid";
+				$this->session->set_flashdata('login_failed','Invalid user name or password');
+				redirect('login');
 			}
 			
 
@@ -35,6 +41,11 @@ class Login extends MY_Controller {
 			$this->load->view('public/admin_login');			
 		}
 
+	}
+
+	public function admin_logout() {
+		$this->session->unset_userdata('user_id');
+		redirect('login');
 	}
 }
 ?>

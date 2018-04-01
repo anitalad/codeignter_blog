@@ -11,9 +11,10 @@
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
-
-	  
-	     <button type="button" class="btn navbar-brand right btn-link">Logout</button>
+	  <button type="button" class="btn navbar-brand right btn-link">
+	  	 <a class="navbar-brand" href="<?php echo base_url('login/admin_logout'); ?>">Logout</a> 
+	  	<!-- <?= anchor('login/admin_logout','Logout'); ?>-->
+	  </button>
 	 	
 
 	</nav>
